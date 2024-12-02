@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">    
 </head>
 <body>
+
+  <!-- questo e lo style per modificare il design della mia pagina -->
     <style>
         * {
             margin: 0;
@@ -160,25 +162,27 @@
 
     </style>
 
+
+  <!-- Questo è il contenuto della pagina, dove richiamiamo tutti i vari metodi post,rimuovi,aggiungi ecc....-->
     <h1>Lista della Spesa</h1>
-    <form action="/aggiungi" method="POST">
+    <form action="/aggiungi" method="POST">  <!-- aggiunge un nuovo elemento alla lista -->
         <input type="text" name="elemento" placeholder="Nuovo elemento" required>
-        <button type="submit">Aggiungi</button>
+        <button type="submit">Aggiungi</button>  <!-- creo il bottone per aggiungere gli elementi-->
     </form>
 
     <ul>
-        {% for item in elementi %}
+        {% for item in elementi %}    <!-- ciclo for per vedere gli elementi -->
         <li>
             {{ item.elemento }}
-            <form action="/rimuovi/{{ item.id }}" method="POST" style="display:inline;">
-                <button type="submit">Rimuovi</button>
+            <form action="/rimuovi/{{ item.id }}" method="POST" style="display:inline;">  <!-- rimuovi tutti gli elementi -->
+                <button type="submit">Rimuovi</button>  <!-- bottone per rimuovere gli elementi della lista-->
             </form>
         </li>
         {% endfor %}
     </ul>
 
-    <form action="/svuota" method="POST">
-        <button type="submit">Svuota Lista</button>
+    <form action="/svuota" method="POST">  <!-- svuota completamente la lista -->
+        <button type="submit">Svuota Lista</button>  <!-- bottone per svuotare la lista -->
     </form>
 </body>
 </html>
